@@ -1,0 +1,114 @@
+p {
+    width: fit-content !important;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 2px;
+    font-weight: 500;
+}
+
+h3 {
+    margin-left: 15px;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px gray;
+    display: block;
+    margin: 0, auto;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: large;
+}
+
+button:hover, button:focus {
+    box-shadow: 2px 2px 2px #007bff;
+    background-color: #007bff;
+    color: white;
+}
+
+.row {
+    margin: 0px;
+    margin-top: 5px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.row>p {
+    margin-left: 6px;
+    padding: 0px;
+}
+
+.segundaColumna {
+    margin-left: 20px;
+}
+
+.contenedorMensaje {
+    border: 3px solid black;
+    border-radius: 5px;
+    min-height: 60px;
+    max-width: 780px;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.mensajePublicado,
+.formularioMensaje {
+    border: 3px solid black;
+    box-shadow: 8px 8px 8px gray;
+    border-radius: 5px;
+    margin: 0 auto;
+    max-width: 815px;
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.contenedorMensajes {
+    max-height: 355px !important;
+    overflow-y: scroll;
+}
+
+#divisor {
+    width: 97%;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.form-check-label {
+    margin-left: 7px;
+    font-weight: 500;
+}
+
+.form-check {
+    margin-bottom: 5px;
+}
+
+.form-check-input:focus,
+.form-check-input:active {
+    outline: none;
+    box-shadow: none !important;
+}
+
+@media (max-width: 820px) {
+    #divisor {
+        width: 98%;
+    }
+
+    .segundaColumna {
+        margin-right: 10px;
+    }
+
+    .mensajePublicado {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .contenedorMensaje {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
