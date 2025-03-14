@@ -12,8 +12,7 @@ h3 {
 
 .row {
   margin: 0px;
-  margin-top: 5px;
-  padding: 0px ;
+  padding: 0px;
   display: flex;
   align-items: center;
 }
@@ -44,7 +43,7 @@ h3 {
 }
 
 .contenedorMensajes {
-  max-height: 195px !important;
+  max-height: 190px !important;
   overflow-y: scroll;
 }
 
