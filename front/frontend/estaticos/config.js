@@ -1,0 +1,1 @@
+//Cargará Dinamicamente la ruta que se le pase como variable de entorno en el docker run -e

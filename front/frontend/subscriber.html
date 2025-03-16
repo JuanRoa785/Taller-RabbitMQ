@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./estaticos/subscriber.css">
-    <link rel="icon" href="/estaticos/favicon.ico">
+    <link rel="icon" href="estaticos/favicon.ico">
     <title>Suscriptor</title>
 </head>
 <body>
     <div class="d-flex flex-row-reverse">
-        <button id="vistaPublicador" style="margin-right: 15px;  margin-top: 8px;">Publicador</button>
+        <button id="vistaPublicador" style="margin-right: 15px;  margin-top: 8px; margin-bottom: 0px;">Publicador</button>
     </div>
     <h3>Seleccioné los Temas a los que Desee Suscribirse:</h3>
-    <div>
+    <div id="contenedorTemas">
+        <!--
+        Plantilla para cargar los temas desde javaScript:
+
         <div class="row" style="width: 90%; margin: 0 auto;">
             <div class="form-check col d-flex justify-content-center">
                 <input class="form-check-input" type="checkbox" id="tema1" name="tema1" value="tema1">
@@ -30,43 +33,15 @@
                 <label class="form-check-label">Tema 3</label>
             </div>
         </div>
-        
-        <div class="row" style="width: 90%; margin: 0 auto;">
-            <div class="form-check col d-flex justify-content-center">
-                <input class="form-check-input" type="checkbox" id="tema4" name="tema4" value="tema4">
-                <label class="form-check-label">Tema 4</label>
-            </div>
-
-            <div class="form-check col d-flex justify-content-center">
-                <input class="form-check-input" type="checkbox" id="tema5" name="tema5" value="tema5">
-                <label class="form-check-label">Tema 5</label>
-            </div>
-
-            <div class="form-check col d-flex justify-content-center">
-                <input class="form-check-input" type="checkbox" id="tema6" name="tema6" value="tema6">
-                <label class="form-check-label">Tema 6</label>
-            </div>
-        </div>
+        -->
     </div>
 
     <div id="divisor"></div>
 
     <h3>Mensajes Recibidos:</h3>
     <div class="contenedorMensajes">
-        <div class="mensajePublicado">
-            <div class="row">
-                <p class="col">Autor: N.A</p>
-                <p class="col">Fecha: DD/MM/AAAA</p>
-            </div>
-
-            <div class="row">
-                <p class="col">Tema: N.A</p>
-                <p class="col">Redireccionamiento:</p>
-            </div>
-            
-            <p>Mensaje:</p>
-            <div class="contenedorMensaje"></div>
-        </div>
+        <!--
+        Estructura de como se vería un mensaje:
 
         <div class="mensajePublicado">
             <div class="row">
@@ -81,24 +56,13 @@
             
             <p>Mensaje:</p>
             <div class="contenedorMensaje"></div>
-        </div>
-
-        <div class="mensajePublicado">
-            <div class="row">
-                <p class="col">Autor: N.A</p>
-                <p class="col">Fecha: DD/MM/AAAA</p>
-            </div>
-
-            <div class="row">
-                <p class="col">Tema: N.A</p>
-                <p class="col">Redireccionamiento:</p>
-            </div>
-            
-            <p>Mensaje:</p>
-            <div class="contenedorMensaje"></div>
-        </div>
+        </div>-->
+    </div>
+    <div class="d-flex justify-content-center">
+        <button id="reiniciarMensajes" style="margin-right: 15px; margin-top: 8px; margin-bottom: 0px;">Reiniciar Mensajes</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="estaticos/config.js"></script>
     <script src="estaticos/subscriber.js"></script>
 </body>
 </html>
