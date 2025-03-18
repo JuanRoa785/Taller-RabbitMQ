@@ -5,14 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-console.log(window.API_URL);
+//Verificando que las variables de entorno funcionen
+//console.log(window.API_URL);
+//console.log(window.PUBLISHER);
 
 //Clase para almacenar los mensajes publicados:
 let Mensaje = class {
-    constructor(fecha, tema, redireccionamiento, mensaje){
+    constructor(autor = window.PUBLISHER, fecha, routing_key, exchange, mensaje){
+        this.autor = autor
         this.fecha = fecha;
-        this.tema = tema;
-        this.redireccionamiento = redireccionamiento;
+        this.routing_key = routing_key;
+        this.exchange = exchange;
         this.mensaje = mensaje;
     }
 }
@@ -35,7 +38,7 @@ function UTCZonaHoraria(zona="America/Bogota") {
     });
 }
 
-let mensajePorDefecto = new Mensaje(UTCZonaHoraria(), "N.A", "N.A", "N.A");
+let mensajePorDefecto = new Mensaje(window.PUBLISHER, UTCZonaHoraria(), "N.A", "N.A", "N.A");
 
 //Arreglo que carga los mensajes guardados en el localStorage
 let mensajesGuardados = localStorage.getItem("mensajesPublicados");
@@ -53,13 +56,13 @@ function mostrarMensaje(mensaje){
     divMensaje.classList.add("mensajePublicado");
 
     divMensaje.innerHTML = `
-        <p class="col">Fecha: ${mensaje.fecha}</p>
+        <p class="col">Date: ${mensaje.fecha}</p>
         <div class="row">
-            <p class="col">Tema: ${mensaje.tema}</p>
-            <p class="col">Redireccionamiento: ${mensaje.redireccionamiento}</p>
+            <p class="col">Routing Key: ${mensaje.routing_key}</p>
+            <p class="col">Exchange Type: ${mensaje.exchange}</p>
         </div>
 
-        <p>Mensaje:</p>
+        <p>Message:</p>
         <textarea readonly class="form-control" rows="2" >${mensaje.mensaje}</textarea>
     `;
     //Agrega el mensaje como el primer hijo del contenedor:
@@ -76,15 +79,47 @@ mensajesPublicados.forEach(mensaje => {
     mostrarMensaje(mensaje);
 });
 
+//Función para enviar el mensaje consumiendo la API
+async function mensajeEnviado(nuevoMensaje) {
+    try {
+        const respuesta = await fetch("http://" + window.API_URL + "/publishMessage", {
+            method: "POST",
+            body: JSON.stringify(nuevoMensaje),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        if (!respuesta.ok) {
+            const errorData = await respuesta.json();
+            alert("Error al enviar mensaje:\n\n " + JSON.stringify(errorData, null, 2));
+            return false
+        }
+
+        return true;
+
+    } catch (error) {
+        alert("Error al enviar mensaje: " + error.message);
+        return false;
+    }
+}
+
+
 //Event Listener para publicar los mensajes:
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("publicarMensaje").addEventListener("click", function () {
+    document.getElementById("publicarMensaje").addEventListener("click", async function () {
         let nuevoMensaje = new Mensaje(
+            "window.PUBLISHER",
             UTCZonaHoraria(), 
             document.getElementById("selectTema").value, 
             document.getElementById("selectRedirect").value, 
             document.getElementById("areaMensaje").value
         );
+
+        const envioExitoso = await mensajeEnviado(nuevoMensaje);
+        if (!envioExitoso) {
+            return;
+        }
 
         //Se envia a rabbitMQ, si es exitoso:
         if (mensajesPublicados.length == 1) {
@@ -98,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function reiniciarFormulario() {
-    document.getElementById("selectTema").value = "Tema 1";
-    document.getElementById("selectRedirect").value = "Opcion 1";
+    document.getElementById("selectTema").value = "Deportes";
+    document.getElementById("selectRedirect").value = "Fanout";
     document.getElementById("areaMensaje").value = "";
 }
 

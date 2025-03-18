@@ -38,23 +38,24 @@
     <h3>Publicar Nuevo Mensaje:</h3>
     <div class="formularioMensaje">
         <form>
-            <div class="row" style="margin-top: 5px;">
-                <p>Tema: </p>
+            <div class="row" style="margin-top: 5px; margin-bottom: 2px;">
+                <p>Routing Key: </p>
                 <select class="form-select"  id="selectTema" style="width: fit-content;" aria-label="Default select example">
-                    <option value="Tema 1">Tema 1</option>
-                    <option value="Tema 2">Tema 2</option>
-                    <option value="Tema 3">Tema 3</option>
+                    <option value="Deportes">Deportes</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Tecnologia">Tecnología</option>
                 </select>
                 
-                <p>Redireccionamiento:</p>
+                <p>Exchange Type:</p>
                 <select class="form-select" id="selectRedirect" style="width: fit-content;" aria-label="Default select example">
-                    <option value="Opcion 1">Opción 1</option>
-                    <option value="Opcion 2">Opción 2</option>
-                    <option value="Opcion 3">Opción 3</option>
+                    <option value="Fanout">Fanout</option>
+                    <option value="Direct">Direct</option>
+                    <option value="Topic">Topic</option>
+                    <option value="Default">Default</option>
                 </select>
             </div>
             <div class="row">
-                <p style="display: block;">Mensaje: </p>
+                <p style="display: block;">Message: </p>
                 <textarea id="areaMensaje" class="form-control" rows="2" placeholder="Digite su mensaje aquí:"></textarea>
             </div>
         </form>

@@ -62,6 +62,7 @@ h3 {
   margin-right: 20px;
   border: 1px solid black;
   box-shadow: 3px 3px 3px gray;
+  font-weight: 500;
 }
 
 .form-select:focus {
@@ -104,6 +105,10 @@ button:hover, button:focus {
   box-shadow: 2px 2px 2px #007bff; 
   background-color: #007bff;
   color: white;
+}
+
+option {
+  font-weight: 500;
 }
 
 @media (max-width: 820px) {

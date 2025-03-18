@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //Mostrar los temas desde un arreglo:
 document.addEventListener("DOMContentLoaded", function () {
     // Lista de temas
-    const temas = ["Tema 1", "Tema 2", "Tema 3", "Tema 4", "Tema 5", "Tema 6"];
+    const temas = ["Deportes", "Entretenimiento", "Tecnologia"];
     
     const contenedorTemas = document.getElementById("contenedorTemas");
 
@@ -127,15 +127,15 @@ function mostrarMensaje(mensaje){
     divMensaje.innerHTML = `
         
         <div class="row">
-            <p class="col">Autor: ${mensaje.autor}</p>
-            <p class="col">Fecha: ${mensaje.fecha}</p>
+            <p class="col">Publisher: ${mensaje.autor}</p>
+            <p class="col">Date: ${mensaje.fecha}</p>
         </div>
         <div class="row">
-            <p class="col">Tema: ${mensaje.tema}</p>
-            <p class="col">Redireccionamiento: ${mensaje.redireccionamiento}</p>
+            <p class="col">Routing Key: ${mensaje.tema}</p>
+            <p class="col">Exchange Type: ${mensaje.redireccionamiento}</p>
         </div>
 
-        <p>Mensaje:</p>
+        <p>Message:</p>
         <textarea readonly class="form-control" rows="2" >${mensaje.mensaje}</textarea>
     `;
     //Agrega el mensaje como el primer hijo del contenedor:
