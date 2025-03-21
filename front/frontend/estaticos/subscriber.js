@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Clase para almacenar los mensajes recibidos:
 let Mensaje = class {
-    constructor(autor, fecha, tema, redireccionamiento, mensaje){
-        this.autor = autor;
+    constructor(autor = window.PUBLISHER, fecha, routing_key, exchange, mensaje){
+        this.autor = autor
         this.fecha = fecha;
-        this.tema = tema;
-        this.redireccionamiento = redireccionamiento;
+        this.routing_key = routing_key;
+        this.exchange = exchange;
         this.mensaje = mensaje;
     }
 }
@@ -131,8 +131,8 @@ function mostrarMensaje(mensaje){
             <p class="col">Date: ${mensaje.fecha}</p>
         </div>
         <div class="row">
-            <p class="col">Routing Key: ${mensaje.tema}</p>
-            <p class="col">Exchange Type: ${mensaje.redireccionamiento}</p>
+            <p class="col">Routing Key: ${mensaje.routing_key}</p>
+            <p class="col">Exchange Type: ${mensaje.exchange}</p>
         </div>
 
         <p>Message:</p>
@@ -144,7 +144,7 @@ function mostrarMensaje(mensaje){
 
 if (mensajesRecibidos.length != 1) {
     //Eliminar el mensaje por default para que no se muestre en pantalla
-    mensajesRecibidos = mensajesRecibidos.filter((i) => i.autor !== "N.A");
+    mensajesRecibidos = mensajesRecibidos.filter((i) => i.exchange !== "N.A");
 }
 
 //Muestra los mensajes en su respectivo contenedor
@@ -159,4 +159,51 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//Se llamará cada dos segundos la función consumirMensajes
+const intervalID = setInterval(consumirMensajes, 3000); 
+
 //Función para recibir y mostrar los nuevos mensajes de rabbitMQ
+async function consumirMensajes() {
+    try {
+        const respuesta = await fetch("http://" + window.API_URL + "/consumer/getMessages", {
+            method: "POST",
+            body: JSON.stringify(temasSuscritos),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        if (!respuesta.ok) {
+            const errorData = await respuesta.json();
+            alert("Error al enviar mensaje:\n\n " + JSON.stringify(errorData, null, 2));
+            return false
+        }
+
+        const data = await respuesta.json(); 
+        if (data != null){
+            //console.log("Mensajes recibidos:", data.mensajes);
+            data.mensajes.forEach(mensaje => {
+
+                let nuevoMensaje = new Mensaje(
+                    mensaje.autor,
+                    mensaje.fecha, 
+                    mensaje.routing_key, 
+                    mensaje.exchange, 
+                    mensaje.mensaje
+                );
+
+                if (mensajesRecibidos.length == 1) {
+                    contenedorMensajes.removeChild(contenedorMensajes.firstElementChild);
+                }
+                mensajesRecibidos.push(nuevoMensaje);
+                localStorage.setItem("mensajesRecibidos", JSON.stringify(mensajesRecibidos));
+                mostrarMensaje(nuevoMensaje);
+            });
+        }
+        return true;
+
+    } catch (error) {
+        alert("Error al enviar mensaje: " + error.message);
+        return false;
+    }
+}

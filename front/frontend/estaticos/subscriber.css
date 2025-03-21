@@ -61,7 +61,7 @@ button:hover, button:focus {
 }
 
 .contenedorMensajes {
-    max-height: 355px !important;
+    max-height: 395px !important;
     overflow-y: scroll;
 }
 

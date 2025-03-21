@@ -71,7 +71,7 @@ function mostrarMensaje(mensaje){
 
 if (mensajesPublicados.length != 1) {
     //Eliminar el mensaje por default para que no se muestre en pantalla
-    mensajesPublicados = mensajesPublicados.filter((i) => i.tema !== "N.A");
+    mensajesPublicados = mensajesPublicados.filter((i) => i.exchange !== "N.A");
 }
 
 //Muestra los mensajes en su respectivo contenedor
@@ -82,7 +82,7 @@ mensajesPublicados.forEach(mensaje => {
 //Función para enviar el mensaje consumiendo la API
 async function mensajeEnviado(nuevoMensaje) {
     try {
-        const respuesta = await fetch("http://" + window.API_URL + "/publishMessage", {
+        const respuesta = await fetch("http://" + window.API_URL + "/publisher/publishMessage", {
             method: "POST",
             body: JSON.stringify(nuevoMensaje),
             headers: {
@@ -109,10 +109,10 @@ async function mensajeEnviado(nuevoMensaje) {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("publicarMensaje").addEventListener("click", async function () {
         let nuevoMensaje = new Mensaje(
-            "window.PUBLISHER",
+            window.PUBLISHER,
             UTCZonaHoraria(), 
-            document.getElementById("selectTema").value, 
-            document.getElementById("selectRedirect").value, 
+            document.getElementById("selectRK").value, 
+            document.getElementById("selectExchange").value, 
             document.getElementById("areaMensaje").value
         );
 
@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function reiniciarFormulario() {
-    document.getElementById("selectTema").value = "Deportes";
-    document.getElementById("selectRedirect").value = "Fanout";
+    document.getElementById("selectRK").value = "Deportes";
+    document.getElementById("selectExchange").value = "Fanout";
     document.getElementById("areaMensaje").value = "";
 }
 
