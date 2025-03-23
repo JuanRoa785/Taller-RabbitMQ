@@ -1,4 +1,5 @@
 import pika
+from env import RABBIT_URL
 from fastapi import APIRouter
 from fastapi import Body
 from typing import List
@@ -7,7 +8,7 @@ import json
 router = APIRouter()
 
 #Conexion a RabbitMQ
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host=RABBIT_URL))
 channel = connection.channel()
 
 #Creación de cola temporal especifica para cada cliente

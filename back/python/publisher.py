@@ -1,4 +1,5 @@
 import pika
+from env import RABBIT_URL
 from models import Message
 from fastapi import APIRouter
 
@@ -6,7 +7,7 @@ router = APIRouter()
 
 #Conexión a RabbitMQ
 def getConnectionInfo():
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=RABBIT_URL))
     return connection, connection.channel()
 
 #EndPoint Para publicar mensajes:
