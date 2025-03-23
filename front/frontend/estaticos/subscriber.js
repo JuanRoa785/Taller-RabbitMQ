@@ -174,7 +174,7 @@ async function consumirMensajes() {
 
         if (!respuesta.ok) {
             const errorData = await respuesta.json();
-            alert("Error al enviar mensaje:\n\n " + JSON.stringify(errorData, null, 2));
+            alert("Error al consumir mensajes:\n\n " + JSON.stringify(errorData, null, 2));
             return false
         }
 
@@ -202,7 +202,7 @@ async function consumirMensajes() {
         return true;
 
     } catch (error) {
-        alert("Error al enviar mensaje: " + error.message);
+        alert("Error al consumir mensajes: " + error.message);
         return false;
     }
 }
