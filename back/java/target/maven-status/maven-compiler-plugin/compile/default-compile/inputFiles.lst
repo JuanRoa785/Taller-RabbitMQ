@@ -1,0 +1,6 @@
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/Configuration/CorsConfig.java
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/Configuration/RabbitMQConfig.java
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/Consumer/Consumer.java
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/Models/Message.java
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/Publisher/Publisher.java
+/home/roa/Documentos/UIS/9no Semestre/Software 3/Taller 1/back/java/src/main/java/com/POO/tallerRabbitMQ/TallerRabbitMqApplication.java

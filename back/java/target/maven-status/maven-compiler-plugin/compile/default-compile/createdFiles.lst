@@ -1,0 +1,7 @@
+com/POO/tallerRabbitMQ/Publisher/Publisher.class
+com/POO/tallerRabbitMQ/Configuration/RabbitMQConfig.class
+com/POO/tallerRabbitMQ/TallerRabbitMqApplication.class
+com/POO/tallerRabbitMQ/Models/Message.class
+com/POO/tallerRabbitMQ/Consumer/Consumer.class
+com/POO/tallerRabbitMQ/Consumer/Consumer$1.class
+com/POO/tallerRabbitMQ/Configuration/CorsConfig.class
