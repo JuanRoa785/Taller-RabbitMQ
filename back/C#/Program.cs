@@ -29,7 +29,7 @@ app.UseCors("AllowAll");
 var rabbitService = app.Services.GetRequiredService<RabbitMqConsumerServiceAsync>();
 await rabbitService.InitializeAsync();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || true) //Permite acceder al Swagger en "Producción"
 {
     app.UseSwagger();
     app.UseSwaggerUI(
