@@ -124,7 +124,6 @@ function mostrarMensaje(mensaje){
     divMensaje.classList.add("mensajePublicado");
 
     divMensaje.innerHTML = `
-        
         <div class="row">
             <p class="col">Publisher: ${mensaje.autor}</p>
             <p class="col">Date: ${mensaje.fecha}</p>
