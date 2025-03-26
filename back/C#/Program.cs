@@ -20,6 +20,9 @@ builder.Services.AddSwaggerGen(c => {
 
 builder.Services.AddSingleton<RabbitMqConsumerServiceAsync>();
 
+builder.WebHost.UseKestrel()
+              .UseUrls("http://localhost:5040"); //Especificar el puerto donde se va a ejecutar
+
 var app = builder.Build();
 app.UseCors("AllowAll");
 
