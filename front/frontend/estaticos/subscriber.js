@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//Se llamará cada dos segundos la función consumirMensajes
+//Se llamará cada tres segundos la función consumirMensajes
 const intervalID = setInterval(consumirMensajes, 3000); 
 
 //Función para recibir y mostrar los nuevos mensajes de rabbitMQ
