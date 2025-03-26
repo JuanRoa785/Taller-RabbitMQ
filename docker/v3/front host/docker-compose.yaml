@@ -1,0 +1,27 @@
+services:
+  front_python:
+    image: front_taller
+    container_name: front_python
+    environment:
+      - API_URL=10.6.101.100:8000
+      - PUBLISHER=Python
+    ports:
+      - 8080:80
+  
+  front_dotnet:
+    image: front_taller
+    container_name: front_dotnet
+    environment:
+      - API_URL=10.6.101.100:5040
+      - PUBLISHER=C#
+    ports:
+      - 8081:80
+  
+  front_java:
+    image: front_taller
+    container_name: front_java
+    environment:
+      - API_URL=10.6.101.100:7070
+      - PUBLISHER=Java
+    ports:
+      - 8082:80

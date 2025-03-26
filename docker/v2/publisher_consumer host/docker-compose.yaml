@@ -1,0 +1,54 @@
+services:
+  back_python:
+    image: back_python
+    container_name: back_python
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 8000:8000
+  
+  front_python:
+    image: front_taller
+    container_name: front_python
+    environment:
+      - API_URL=localhost:8000
+      - PUBLISHER=Python
+    ports:
+      - 8080:80
+
+  back_dotnet:
+    image: back_dotnet
+    container_name: back_dotnet
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 5040:5040
+  
+  front_dotnet:
+    image: front_taller
+    container_name: front_dotnet
+    environment:
+      - API_URL=localhost:5040
+      - PUBLISHER=C#
+    ports:
+      - 8081:80
+
+  back_java:
+    image: back_java
+    container_name: back_java
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 7070:7070
+  
+  front_java:
+    image: front_taller
+    container_name: front_java
+    environment:
+      - API_URL=localhost:7070
+      - PUBLISHER=Java
+    ports:
+      - 8082:80

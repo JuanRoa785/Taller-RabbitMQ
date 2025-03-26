@@ -1,0 +1,27 @@
+services:
+  back_python:
+    image: back_python
+    container_name: back_python
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 8000:8000
+
+  back_dotnet:
+    image: back_dotnet
+    container_name: back_dotnet
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 5040:5040
+
+  back_java:
+    image: back_java
+    container_name: back_java
+    environment:
+      - RABBIT_URL=10.6.101.107
+    restart: always
+    ports:
+      - 7070:7070
