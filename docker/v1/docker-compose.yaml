@@ -1,0 +1,92 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: taller_rabbitmq
+    hostname: taller_rabbitmq
+    networks:
+      - taller_rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  back_python:
+    image: back_python
+    container_name: back_python
+    networks:
+      - taller_rabbitmq
+    environment:
+      - RABBIT_URL=taller_rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - 8000:8000
+  
+  front_python:
+    image: front_taller
+    container_name: front_python
+    environment:
+      - API_URL=localhost:8000
+      - PUBLISHER=Python
+    depends_on:
+      - back_python
+    ports:
+      - 8080:80
+
+  back_dotnet:
+    image: back_dotnet
+    container_name: back_dotnet
+    networks:
+      - taller_rabbitmq
+    environment:
+      - RABBIT_URL=taller_rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - 5040:5040
+  
+  front_dotnet:
+    image: front_taller
+    container_name: front_dotnet
+    environment:
+      - API_URL=localhost:5040
+      - PUBLISHER=C#
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - 8081:80
+
+  back_java:
+    image: back_java
+    container_name: back_java
+    networks:
+      - taller_rabbitmq
+    environment:
+      - RABBIT_URL=taller_rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - 7070:7070
+  
+  front_java:
+    image: front_taller
+    container_name: front_java
+    environment:
+      - API_URL=localhost:7070
+      - PUBLISHER=Java
+    depends_on:
+      - back_java
+    ports:
+      - 8082:80
+
+networks:
+  taller_rabbitmq:
+    driver: bridge
