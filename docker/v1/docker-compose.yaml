@@ -33,8 +33,6 @@ services:
     environment:
       - API_URL=localhost:8000
       - PUBLISHER=Python
-    depends_on:
-      - back_python
     ports:
       - 8080:80
 
@@ -57,9 +55,6 @@ services:
     environment:
       - API_URL=localhost:5040
       - PUBLISHER=C#
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
     ports:
       - 8081:80
 
@@ -82,8 +77,6 @@ services:
     environment:
       - API_URL=localhost:7070
       - PUBLISHER=Java
-    depends_on:
-      - back_java
     ports:
       - 8082:80
 
