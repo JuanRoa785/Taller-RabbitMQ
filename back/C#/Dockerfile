@@ -25,7 +25,7 @@ WORKDIR /app
 # Copiar desde la etapa de build
 COPY --from=build /app/out ./
 
-# Exponer el puerto (ajusta según tu app)
+# Exponer el puerto
 EXPOSE 5040
 
 # Variable de entorno opcional para RabbitMQ (puede sobreescribirse)
