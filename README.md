@@ -293,7 +293,7 @@ docker compose up -d
 
 Para una explicación más detallada, consulta los siguientes recursos:  
 
-📄 **[Documentación Completa](./Documentacion)** – Archivo PDF con información detallada sobre la implementación.  
+📄 **[Documentación Completa](./Documentacion/Mensajería%20Publish-Subscribe%20con%20RabbitMQ.pdf)** – Archivo PDF con información detallada sobre la implementación.  
 🎥 **[Video Explicativo](https://www.youtube.com/watch?v=SD9hrMAeWh4)** - Disponible en YouTube
 
   
