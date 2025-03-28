@@ -286,12 +286,15 @@ docker compose up -d
    - **Python** en `http://IP_FRONT:8080`  
    - **C#** en `http://IP_FRONT:8081`  
    - **Java** en `http://IP_FRONT:8082`
+  
+ > ℹ️ **Nota**: Para detener la ejecución de los contenedores se deberá usar el comando `docker compose down` en los respectivos directorios donde se hizo el `docker compose up -d` previamente.
      
 ## 📚 Más Documentación  
 
 Para una explicación más detallada, consulta los siguientes recursos:  
 
-📄 **[Documentación Completa](./documentacion.pdf)** – Archivo PDF con información detallada sobre la implementación.  
-🎥 **[Video Explicativo](#)** – Próximamente en YouTube.  
+📄 **[Documentación Completa](./Documentacion.pdf)** – Archivo PDF con información detallada sobre la implementación.  
+🎥 **[Video Explicativo](https://www.youtube.com/watch?v=SD9hrMAeWh4)** - Disponible en YouTube
+
   
 
